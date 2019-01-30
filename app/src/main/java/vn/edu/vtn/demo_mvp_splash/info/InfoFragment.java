@@ -16,16 +16,6 @@ import vn.edu.vtn.demo_mvp_splash.db.prefs.SaveInfoLogin;
 
 public class InfoFragment extends Fragment {
     TextView txtName, txtOld, txtHometown, txtWork;
-    Info info;
-
-//    public static InfoFragment newInstance(Info info) {
-//        InfoFragment infoFragment = new InfoFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("INFO", info);
-//        infoFragment.setArguments(bundle);
-//        return infoFragment;
-//    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

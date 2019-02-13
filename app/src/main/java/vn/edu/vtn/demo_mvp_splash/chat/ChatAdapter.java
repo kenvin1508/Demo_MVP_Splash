@@ -3,6 +3,7 @@ package vn.edu.vtn.demo_mvp_splash.chat;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         void bindData(int position) {
             Message message = listMess.get(position);
             txtMess.setText(message.getContentMessage());
+            Log.d("AAAA", message.getContentMessage());
         }
     }
 

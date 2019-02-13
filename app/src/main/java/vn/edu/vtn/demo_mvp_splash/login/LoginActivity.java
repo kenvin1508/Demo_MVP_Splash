@@ -10,13 +10,13 @@ import android.widget.Toast;
 
 import vn.edu.vtn.demo_mvp_splash.MainActivity;
 import vn.edu.vtn.demo_mvp_splash.R;
-import vn.edu.vtn.demo_mvp_splash.db.prefs.SaveInfoLogin;
+import vn.edu.vtn.demo_mvp_splash.db.prefs.SharedPrefsHelper;
 
 public class LoginActivity extends AppCompatActivity implements LoginMVP.View {
     TextView txtUsername, txtPassword;
     Button btnLogin;
     LoginMVP.Presenter presenter;
-    SaveInfoLogin saveInfoLogin;
+    SharedPrefsHelper sharedPrefsHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginMVP.View {
         txtPassword = findViewById(R.id.txtPassword);
         btnLogin = findViewById(R.id.btnLogin);
         presenter = new LoginPresenter(this, LoginActivity.this);
-        saveInfoLogin = new SaveInfoLogin(this);
+        sharedPrefsHelper = new SharedPrefsHelper(this);
     }
 
     private void addEvents() {
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements LoginMVP.View {
     @Override
     public void showResult(boolean result, String username) {
         if (result) {
-            saveInfoLogin.setLoggedin(true, username);
+            sharedPrefsHelper.setLoggedin(true, username);
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         } else {

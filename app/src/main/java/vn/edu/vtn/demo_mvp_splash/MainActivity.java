@@ -9,14 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import vn.edu.vtn.demo_mvp_splash.db.prefs.SaveInfoLogin;
+import vn.edu.vtn.demo_mvp_splash.db.prefs.SharedPrefsHelper;
 import vn.edu.vtn.demo_mvp_splash.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     Button btnLogOut;
-    SaveInfoLogin saveInfoLogin;
+    SharedPrefsHelper sharedPrefsHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveInfoLogin = new SaveInfoLogin(MainActivity.this);
-                saveInfoLogin.setLoggedin(false, "");
+                sharedPrefsHelper = new SharedPrefsHelper(MainActivity.this);
+                sharedPrefsHelper.setLoggedin(false, "");
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 finish();
             }
@@ -47,10 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.setAdapter(mainFragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
-
-
-
     }
 
 }

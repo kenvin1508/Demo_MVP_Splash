@@ -10,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import vn.edu.vtn.demo_mvp_splash.R;
-import vn.edu.vtn.demo_mvp_splash.db.HelperModel;
 import vn.edu.vtn.demo_mvp_splash.db.model.Info;
-import vn.edu.vtn.demo_mvp_splash.db.prefs.SaveInfoLogin;
+import vn.edu.vtn.demo_mvp_splash.db.prefs.SharedPrefsHelper;
 
 public class InfoFragment extends Fragment implements InfoMVP.view {
     TextView txtName, txtOld, txtHometown, txtWork;
@@ -28,8 +27,8 @@ public class InfoFragment extends Fragment implements InfoMVP.view {
         txtWork = view.findViewById(R.id.txtWork);
         presenter = new InfoPresenter(getActivity(), this);
 
-        SaveInfoLogin saveInfoLogin = new SaveInfoLogin(this.getActivity());
-        String username = saveInfoLogin.preferences.getString("user", "");
+        SharedPrefsHelper sharedPrefsHelper = new SharedPrefsHelper(this.getActivity());
+        String username = sharedPrefsHelper.preferences.getString("user", "");
 
         presenter.loadInfo(username);
         return view;
